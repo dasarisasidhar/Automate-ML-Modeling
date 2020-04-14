@@ -61,6 +61,13 @@ def regressor():
             rmse = np.sqrt(mean_squared_error(y_test,y_pred))
             #print(name," ( r_square , rmse) is: ", r_square, rmse)
             metrix.append((name, r_square, rmse))
+    print("""R_square - The Higher the R-squared, the better the model. ( R2 corresponds to the squared correlation between the observed outcome values and the predicted values by the model)
+
+Root mean squared error is used to get the accuracy of model: lowest RMSE - the best one in your case (MSE = mean((observeds - predicteds)^2) and RMSE = sqrt(MSE))
+
+Residual Standard Error (RSE) -  The lower the RSE, the better the model. In practice, the difference between RMSE and RSE is very small, particularly for large multivariate data.
+
+Mean Absolute Error (MAE) -  MAE = mean(abs(observeds - predicteds)). MAE is less sensitive to outliers compared to RMSE.   """)
     return metrix
 
 def classifier():
@@ -89,6 +96,9 @@ def classifier():
             c_report.append(classification_report(y_test, y_pred))
             #print(name," (train accuracy , test_accuracy) is: ", train_acc, test_acc)
             metrix.append([name, train_acc, test_acc])
+    print("model.score = how well the model is trained (training accuracy)")
+    print("accuracy_score = how well the model is predicted (testing accuracy)")
+    print("confusion matrix to evaluate performance of data")
     return metrix
 
 if(len(labels.unique())<10):
